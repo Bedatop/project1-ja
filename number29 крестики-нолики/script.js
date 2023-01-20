@@ -10,36 +10,45 @@ function start(cells) {
             } else {
                 this.textContent = '0';
             }
-            i++;
-            this.removeEventListener('click', step)
-            if (isWinner(cells)==true) {
-                console.log(`Пеобедитель ${this.textContent}`)
+            this.removeEventListener('click', step);
+            if (isWinner(cells) == true) {
+                alert(`Победитель ${this.textContent}`);
             }
+            else if (i==8) {
+                alert('Ничья')
+            }
+            i++
         })
     }
 }
 
 start(cells);
 
-function isWinner(combs) {
-    let comb=[
-        [0,1,2],
-        [3,4,5],
-        [6,7,8],
-        [0,3,6],
-        [1,4,7],
-        [2,5,8],
-        [0,4,8],
-        [2,4,6],
+function isWinner(cells) {
+    let combs = [
+        [0, 1, 2], // comb
+        [3, 4, 5], // comb
+        [6, 7, 8], // comb
+        [0, 3, 6], // comb
+        [1, 4, 7], // comb
+        [2, 5, 8], // comb
+        [0, 4, 8], // comb
+        [2, 4, 6]  // comb
     ]
-    for (comb of combs) {
-        if (cells[comb[0]].textContent==cells[comb[1]].textContent && cells[comb[1]].textContent == cells[comb[2]].textContent && cells[comb[0]].textContent !='')
-            {
-                return true;
-            }
-        else {
-            return false;
-        }
-    }
 
+    for (let comb of combs) {
+        if (cells[comb[0]].textContent == cells[comb[1]].textContent && cells[comb[1]].textContent ==
+            cells[comb[2]].textContent && cells[comb[0]].textContent != '') {
+            return true;
+        }
+        
+    }
+    return false;
 }
+
+// let comb
+// comb = [0, 1, 2]
+// если (cells[0]) == (cells[1]) ==  cells[2]]
+// true
+
+// comb = [3, 4, 5]
